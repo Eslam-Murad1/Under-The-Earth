@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://bynn8btfs0ui0"]
+
+[ext_resource type="Script" uid="uid://8eqhd0va0n2k" path="res://Scripts/end_screen.gd" id="1_5jg4v"]
+[ext_resource type="Texture2D" uid="uid://dj8a3eju2ljyf" path="res://Random-Assets/EndBG.jpeg" id="1_k3q6g"]
+[ext_resource type="Texture2D" uid="uid://uvlfdaxaoiwa" path="res://Random-Assets/Button.png" id="3_wgbnx"]
+[ext_resource type="AudioStream" uid="uid://bbfcpox8igm50" path="res://sound/ClickSound.mp3" id="4_esklm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jg4v"]
+texture = ExtResource("1_k3q6g")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_esklm"]
+texture = ExtResource("3_wgbnx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgbnx"]
+texture = ExtResource("3_wgbnx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bkglk"]
+texture = ExtResource("3_wgbnx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wn6ih"]
+texture = ExtResource("3_wgbnx")
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5jg4v")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5jg4v")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 4.0
+offset_right = 160.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_esklm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_wgbnx")
+theme_override_styles/hover = SubResource("StyleBoxTexture_bkglk")
+theme_override_styles/focus = SubResource("StyleBoxTexture_wn6ih")
+text = "Exit
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Button"]
+stream = ExtResource("4_esklm")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

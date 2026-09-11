@@ -1,0 +1,111 @@
+[gd_scene load_steps=20 format=3 uid="uid://b45xqlmjq5jod"]
+
+[ext_resource type="Script" uid="uid://fqyvbgofkv2f" path="res://Scripts/player.gd" id="1_kpjcp"]
+[ext_resource type="Texture2D" uid="uid://bahrplvalanya" path="res://Pixel Art Platformer Asset/Character/Animations/Idle/idle1.png" id="2_rv870"]
+[ext_resource type="Texture2D" uid="uid://byja22yjlirra" path="res://Pixel Art Platformer Asset/Character/Animations/Idle/idle2.png" id="3_efikj"]
+[ext_resource type="Texture2D" uid="uid://sm8kg020w5jg" path="res://Pixel Art Platformer Asset/Character/Animations/Idle/idle3.png" id="4_itxgx"]
+[ext_resource type="Texture2D" uid="uid://c3xtehircdabr" path="res://Pixel Art Platformer Asset/Character/Animations/Idle/idle4.png" id="5_cgsek"]
+[ext_resource type="AudioStream" uid="uid://2r0h7ebvrkdn" path="res://sound/jump.mp3" id="5_cxr5p"]
+[ext_resource type="Texture2D" uid="uid://bao83cvj06b5w" path="res://Pixel Art Platformer Asset/Character/Animations/Idle/idle5.png" id="6_0pi4m"]
+[ext_resource type="AudioStream" uid="uid://b1edqdyerd65" path="res://sound/Death.mp3" id="6_tdg3f"]
+[ext_resource type="Texture2D" uid="uid://coj2p7i4aqd0a" path="res://Pixel Art Platformer Asset/Character/Animations/Idle/idle6.png" id="7_sg6sq"]
+[ext_resource type="Texture2D" uid="uid://badausuhc4tja" path="res://Pixel Art Platformer Asset/Character/Animations/Jump/jump1.png" id="8_h84ma"]
+[ext_resource type="Texture2D" uid="uid://dcdjk2mbhldvi" path="res://Pixel Art Platformer Asset/Character/Animations/Jump/jump2.png" id="9_47wu6"]
+[ext_resource type="Texture2D" uid="uid://b6rw2nuk7dsp1" path="res://Pixel Art Platformer Asset/Character/Animations/Jump/jump3.png" id="10_2n1s8"]
+[ext_resource type="Texture2D" uid="uid://bty4gckx1n76x" path="res://Pixel Art Platformer Asset/Character/Animations/Run/run1.png" id="11_3vjad"]
+[ext_resource type="Texture2D" uid="uid://dbrwn3xiccvd7" path="res://Pixel Art Platformer Asset/Character/Animations/Run/run2.png" id="12_yt0h1"]
+[ext_resource type="Texture2D" uid="uid://nnpp4rwgcquw" path="res://Pixel Art Platformer Asset/Character/Animations/Run/run3.png" id="13_vd78s"]
+[ext_resource type="Texture2D" uid="uid://cabtbdapve5gd" path="res://Pixel Art Platformer Asset/Character/Animations/Run/run4.png" id="14_ictha"]
+[ext_resource type="Texture2D" uid="uid://cg1u37wbnplqq" path="res://Pixel Art Platformer Asset/Character/Animations/Run/run5.png" id="15_1jgrc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kpjcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rv870")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_efikj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_itxgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cgsek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0pi4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sg6sq")
+}],
+"loop": true,
+"name": &"idel",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_h84ma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_47wu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2n1s8")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_3vjad")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yt0h1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vd78s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ictha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1jgrc")
+}],
+"loop": true,
+"name": &"move",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kne1u"]
+size = Vector2(12.888901, 20.583328)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(504, 271)
+scale = Vector2(1.5, 1.5)
+slide_on_ceiling = false
+script = ExtResource("1_kpjcp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.0000005, -12.666667)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_kpjcp")
+animation = &"move"
+frame = 1
+frame_progress = 0.019125734
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.6666565, 3.8958282)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_kne1u")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_cxr5p")
+volume_db = -9.555
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tdg3f")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://4fvn5vinaglm"]
+
+[ext_resource type="Script" uid="uid://bi25vsth5ckqr" path="res://Scripts/thorns.gd" id="1_syquo"]
+[ext_resource type="Texture2D" uid="uid://bq05cu3bel3du" path="res://Random-Assets/crown1.png" id="2_k758w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llyua"]
+size = Vector2(20, 4.75)
+
+[node name="thorns" type="Area2D"]
+position = Vector2(5, -1)
+script = ExtResource("1_syquo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(52.999996, -25)
+scale = Vector2(0.08593746, 0.08593749)
+texture = ExtResource("2_k758w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(53, -25.625)
+shape = SubResource("RectangleShape2D_llyua")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

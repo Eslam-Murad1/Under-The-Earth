@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://danwpt5kcouf6"]
+
+[ext_resource type="Texture2D" uid="uid://b6ayjikyqxqtj" path="res://kenney_abstract-platformer/PNG/Tiles/Brown tiles/tileBrown_25.png" id="1_a4f85"]
+[ext_resource type="Texture2D" uid="uid://dqxpjdr77ol1j" path="res://kenney_abstract-platformer/PNG/Tiles/Brown tiles/tileBrown_26.png" id="2_vbfmh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmru1"]
+size = Vector2(40, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4f85"]
+size = Vector2(40, 9)
+
+[node name="move_land" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(15, 11.5)
+scale = Vector2(0.3125, 0.265625)
+texture = ExtResource("1_a4f85")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(63, 0)
+texture = ExtResource("2_vbfmh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(25, 7)
+shape = SubResource("RectangleShape2D_xmru1")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(25, 7.5)
+shape = SubResource("RectangleShape2D_a4f85")
+debug_color = Color(0.662686, 0.47140545, 0.5544539, 0.41960785)
